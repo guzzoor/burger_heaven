@@ -10,7 +10,7 @@ const io = require('socket.io')(http);
 const path = require('path');
 
 // Pick arbitrary port for server
-const port = 3000;
+const port = 4000;
 app.set('port', (process.env.PORT || port));
 
 // Serve static assets from public/
