@@ -10,3 +10,10 @@ body {
     font-size: 1.5em;
 }
 
+
+.allergie{
+    font-weight: bold;
+    color: red;
+    text-transform: uppercase;
+}
+
