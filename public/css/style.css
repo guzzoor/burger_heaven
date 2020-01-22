@@ -8,6 +8,7 @@
 body {
     font-family: "Droid Serif", sans-serif;
     font-size: 1.5em;
+    margin: 0 auto;
 }
 
 
@@ -25,3 +26,12 @@ body {
 button:hover{
     background-color: aqua;
 }
+
+table{
+    width: 75%;
+}
+
+td{
+    text-align: center;
+}
+
