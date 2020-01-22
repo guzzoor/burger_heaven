@@ -35,3 +35,19 @@ td{
     text-align: center;
 }
 
+section{
+    margin: 10px 10px 10px 10px;
+    padding: 10px;
+}
+
+#burgers{
+    border: 2px solid white;
+}
+
+#contact{
+    border: 2px solid black;
+}
+
+button{
+    width: 10%;
+}
