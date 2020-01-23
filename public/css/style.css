@@ -11,6 +11,16 @@ body {
     margin: 0 auto;
 }
 
+.grid-wrapper{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+}
+
+.grid-wrapper img{
+    width: 200px;
+    height: 150px;
+}
+
 
 .allergie{
     font-weight: bold;
@@ -25,14 +35,6 @@ body {
 
 button:hover{
     background-color: aqua;
-}
-
-table{
-    width: 75%;
-}
-
-td{
-    text-align: center;
 }
 
 header{
