@@ -2,8 +2,8 @@
 
 /* Comment is written like this  */
 
-@import url("reset.css");
 @import url("https://fonts.googleapis.com/css?family=Droid+Serif|Share+Tech+Mono");
+
 
 body {
     font-family: "Droid Serif", sans-serif;
@@ -35,19 +35,34 @@ td{
     text-align: center;
 }
 
+header{
+    margin: 10px;
+    padding: 10px;
+}
+
+header.img{
+    opacity: 0.5;
+}
+
 section{
-    margin: 10px 10px 10px 10px;
+    margin: 10px;
     padding: 10px;
 }
 
 #burgers{
-    border: 2px solid white;
+    border: 2px dashed white;
 }
 
 #contact{
-    border: 2px solid black;
+    border: 2px dashed black;
 }
 
 button{
     width: 10%;
+}
+
+#headerImg{
+    opacity: 0.5;
+    width: 100%;
+    height: 25%;
 }
