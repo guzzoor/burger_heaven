@@ -1,4 +1,5 @@
 
+/*
 
 const vm = new Vue({
     el: '#myID',
@@ -15,3 +16,4 @@ const vm = new Vue({
     }
   })
   
+  */
