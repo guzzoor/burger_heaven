@@ -2,16 +2,26 @@
 
 
 let vm = new Vue({
-    el: '#grid-wrapper',
+    el: '#vue-wrapper',
     data: {
-      menu: food
+      menu: food,
+      currentOrderData: {
+        name: null,
+        email: null,
+        street: null,
+        house: null,
+        payment: null,
+        gender: null,
+        orderedBurger: null,
+      },
+      orderData: [], 
+      checkedNames: [],
     },
+
     
     methods: {
-      printString: function () {
-              console.log("Hello world");
+      formButton: function () {
         }
     }
   })
-  
-  
+

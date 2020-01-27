@@ -18,31 +18,38 @@
             <img src="img/burger-header1.jpg" alt="burgers">
         </header>
         <main>
+            <div id="vue-wrapper">
            <!-------------------------------------- Burger selection part -------------------------------------->
 
-           <!-- ------------------------- VUE ---------------------- -->
+           <!-- ------------------------- VUE ---------------------->
            <section id="burgers">
                 <h2>Select burger</h2>
                 <div id="grid-wrapper">
-                    <div class="inner-grid"v-for="burger in menu">
+                    <div class="inner-grid" v-for="burger in menu">
                         {{burger.name}}
                         <img v-bind:src="burger.img">
                         <ul>
                             <li v-for="all in burger.allergies">{{all}}</li>
                         </ul>
+                        <!-- Need go get these different, I don't see how...-->
+                        <div id="checkbox">
+                            <label for="add-to-order">Add to order</label>
+                            <input id="add-to-order" type="checkbox" v-model="currentOrderData.orderedBurger" v-bind:value="burger.name"> 
+                        </div>
+                       
                     </div>
                 </div>
             </section>
-
-
-            <!------------------------ Plain Javascript -------------------------------
+            
+            <!--------------------------- Plain JS ------------------------
             <section id="burgers">
                 <h2>Select burger</h2>
                 <div id="grid-wrapper">
 
                 </div>
             </section>
-        -->
+            -->            
+
             <!-------------------------------------- Customer part -------------------------------------->
             <section id="contact">
                 <h2>Customer information</h2>
@@ -54,25 +61,25 @@
                         <div>
                             <label for="Full name">Full name</label>
                             <br>
-                            <input type="text" id="firstname" name="fn" required="required" placeholder="First- and last name"/>
+                            <input v-model="currentOrderData.name" type="text" id="name" name="fn" required="required" placeholder="First- and last name"/>
                             <br>    
                             <label for="E-mail">E-mail</label>
                             <br>
-                            <input type "text" id="email" name="em" required="required" placeholder="E-mail address"/>
+                            <input v-model="currentOrderData.email" type="text" id="email" name="em" required="required" placeholder="E-mail address"/>
                             <br>
                             <label for="Street">Street</label>
                             <br>
-                            <input type "text" id="street" name="sm" required="required" placeholder="Street name"/>
+                            <input v-model="currentOrderData.street" type="text" id="street" name="sm" required="required" placeholder="Street name"/>
                             <br>
                             <label for="House">House</label>
                             <br>
-                            <input type "text" id="house" name="hn" required="required" placeholder="House number"/>
+                            <input v-model="currentOrderData.house" type="text" id="house" name="hn" required="required" placeholder="House number"/>
                         </div>
 
                     <div>
                         <label for="payment">Payment option</label>
                         <br>
-                        <select id="payment" name="payment">
+                        <select v-model="currentOrderData.payment" id="payment" name="payment">
                             <option value="cash">Cash</option>
                             <option value="card">Card</option>
                             <option value="swish" selected="select">Swish</option>
@@ -82,15 +89,18 @@
                     <div>
                         <h3>Gender</h3>
                         Please enter your information, because, why not?
-                        <input type="radio" name="gender" value="male">Male
-                        <input type="radio" name="gender" value="female">Female
-                        <input type="radio" name="gender" value="other" checked="checked">Other
+                        <input v-model="currentOrderData.gender" type="radio" name="gender" value="male">Male
+                        <input v-model="currentOrderData.gender" type="radio" name="gender" value="female">Female
+                        <input v-model="currentOrderData.gender" type="radio" name="gender" value="other" checked="checked">Other
                     </div>
-                    <button type="submit" value="Send"><img src="img/delivery.png">Send info</button>
+                    <!--<button type="submit" value="Send" id="myButton"><img src="img/delivery.png">Send info</button>-->
+                    <button type="submit" value="Send" class="grid-wrapper" v-on:click="formButton"><img src="img/delivery.png">Send info</button>
                     </form>
                 </fieldset>
-            </section>            
-        </main>
+                {{currentOrderData}}    
+            </section>
+        </div>            
+    </main>
         <footer>
             <hr>
             &copy Jonathan Gustafsson

@@ -27,6 +27,13 @@ body {
 
 .inner-grid{
     display: grid;
+    padding: 1em;
+}
+
+
+.add-to-order{
+    text-align:center; 
+    vertical-align:middle;
 }
 
 .allergie{
