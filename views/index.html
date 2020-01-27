@@ -6,6 +6,10 @@
         <!-- Will reset css -->
         <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="https://vuejs.org/js/vue.js" defer></script>
+        <script src="js/menu.js" defer></script>
+        <!--<script src="js/js_script.js" defer></script>-->
+        <script src="js/vue_script.js" defer></script>
     </head>
     <body>
         <header>
@@ -14,67 +18,38 @@
             <img src="img/burger-header1.jpg" alt="burgers">
         </header>
         <main>
-                        <!-------------------------------------- Burger selection part -------------------------------------->
-            <section id="burgers">
+            <div id="vue-wrapper">
+           <!-------------------------------------- Burger selection part -------------------------------------->
+
+           <!-- ------------------------- VUE ---------------------->
+           <section id="burgers">
                 <h2>Select burger</h2>
-                <div class="grid-wrapper">
-                    <div class="box a">
-                        <h3>The American Dream</h3>
-                        <img src="https://recipes-secure-graphics.grocerywebsite.com/0_GraphicsRecipes/4589_4k.jpg" width="200" alt="American dream">
-                        <ol>
-                            <li>
-                                100% not vegan.
-                            </li>
-                            <li>
-                                100% not healthy.
-                            </li>
-                            <li>
-                                100% delicious.
-                            </li>
-                            <li>
-                                Contains <span class="allergie">gluten</span>.
-                            </li>
-                        </ol>
-                    </div>
-                    <div class="box b">
-                        <h3>The Bacon Attack</h3>
-                        <img src="https://www.pastureprimewagyu.com/wp-content/uploads/Bacon-burger-plus-300x200.jpg" width="200" alt="The Bacon Attack">
-                        <ol>
-                            <li>
-                                100% bacon.
-                            </li>
-                            <li>
-                                100% not healthy.
-                            </li>
-                            <li>
-                                100% delicious.
-                            </li>
-                            <li>
-                                Contains <span class="allergie">gluten</span>.
-                            </li>
-                        </ol>
-                    </div>
-                    <div class="box c">
-                        <h3>Vegan is fun</h3>
-                        <img src="https://www.gordonramsayrestaurants.com/assets/Uploads/_resampled/CroppedFocusedImage192072050-50-TN-Vegan-Burger.jpg" width="200" alt="Vegan is fun">
-                        <ol>
-                            <li>
-                                100% vegan.
-                            </li>
-                            <li>
-                                100% healthy.
-                            </li>
-                            <li>
-                                100% delicious.
-                            </li>
-                            <li>
-                                Contains <span class="allergie">gluten</span>.
-                            </li>
-                        </ol>
+                <div id="grid-wrapper">
+                    <div class="inner-grid" v-for="burger in menu">
+                        {{burger.name}}
+                        <img v-bind:src="burger.img">
+                        <ul>
+                            <li v-for="all in burger.allergies">{{all}}</li>
+                        </ul>
+                        <!-- Need go get these different, I don't see how...-->
+                        <div id="checkbox">
+                            <label for="add-to-order">Add to order</label>
+                            <input id="add-to-order" type="checkbox" v-model="currentOrderData.orderedBurger" v-bind:value="burger.name"> 
+                        </div>
+                       
                     </div>
                 </div>
             </section>
             
+            <!--------------------------- Plain JS ------------------------
+            <section id="burgers">
+                <h2>Select burger</h2>
+                <div id="grid-wrapper">
+
+                </div>
+            </section>
+            -->            
+
             <!-------------------------------------- Customer part -------------------------------------->
             <section id="contact">
                 <h2>Customer information</h2>
@@ -86,25 +61,25 @@
                         <div>
                             <label for="Full name">Full name</label>
                             <br>
-                            <input type="text" id="firstname" name="fn" required="required" placeholder="First- and last name"/>
+                            <input v-model="currentOrderData.name" type="text" id="name" name="fn" required="required" placeholder="First- and last name"/>
                             <br>    
                             <label for="E-mail">E-mail</label>
                             <br>
-                            <input type "text" id="email" name="em" required="required" placeholder="E-mail address"/>
+                            <input v-model="currentOrderData.email" type="text" id="email" name="em" required="required" placeholder="E-mail address"/>
                             <br>
                             <label for="Street">Street</label>
                             <br>
-                            <input type "text" id="street" name="sm" required="required" placeholder="Street name"/>
+                            <input v-model="currentOrderData.street" type="text" id="street" name="sm" required="required" placeholder="Street name"/>
                             <br>
                             <label for="House">House</label>
                             <br>
-                            <input type "text" id="house" name="hn" required="required" placeholder="House number"/>
+                            <input v-model="currentOrderData.house" type="text" id="house" name="hn" required="required" placeholder="House number"/>
                         </div>
 
                     <div>
                         <label for="payment">Payment option</label>
                         <br>
-                        <select id="payment" name="payment">
+                        <select v-model="currentOrderData.payment" id="payment" name="payment">
                             <option value="cash">Cash</option>
                             <option value="card">Card</option>
                             <option value="swish" selected="select">Swish</option>
@@ -114,15 +89,18 @@
                     <div>
                         <h3>Gender</h3>
                         Please enter your information, because, why not?
-                        <input type="radio" name="gender" value="male">Male
-                        <input type="radio" name="gender" value="female">Female
-                        <input type="radio" name="gender" value="other" checked="checked">Other
+                        <input v-model="currentOrderData.gender" type="radio" name="gender" value="male">Male
+                        <input v-model="currentOrderData.gender" type="radio" name="gender" value="female">Female
+                        <input v-model="currentOrderData.gender" type="radio" name="gender" value="other" checked="checked">Other
                     </div>
-                    <button type="submit" value="Send"><img src="delivey.png">Send info</button>
+                    <!--<button type="submit" value="Send" id="myButton"><img src="img/delivery.png">Send info</button>-->
+                    <button type="submit" value="Send" class="grid-wrapper" v-on:click="formButton"><img src="img/delivery.png">Send info</button>
                     </form>
                 </fieldset>
-            </section>            
-        </main>
+                {{currentOrderData}}    
+            </section>
+        </div>            
+    </main>
         <footer>
             <hr>
             &copy Jonathan Gustafsson
