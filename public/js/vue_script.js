@@ -1,19 +1,20 @@
 
-/*
 
-const vm = new Vue({
-    el: '#myID',
+
+let vm = new Vue({
+    el: '.grid-wrapper',
     data: {
-      h: "Burgers",
-      menu: [{name: "american dream", kCal: "1000"}, {name: "bacon attack", kCal: "1000"}, 
-            {name: "meatlovers nightmare", kCal: "500"}],
+      menu: 
+      [{name: "The American Dream", kCal: 1000, img: "img/american_dream.jpg", allergies: ["Gluten", "Lactose"]}, 
+      {name: "Bacon Attack", kCal: "1000", img: "img/bacon_attack.jpg", allergies: ["Gluten", "Lactose"]}, 
+      {name: "Meatlovers nightmare", kCal: 500, img: "img/vegan_burger.jpg", allergies: ["Gluten", "Lactose"]}] 
     },
     
     methods: {
       printString: function () {
               console.log("Hello world");
-    }
+        }
     }
   })
   
-  */
+  
