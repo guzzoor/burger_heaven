@@ -15,13 +15,6 @@ function menuItem(n, k, p, a){
     };  
 }
 
-/*
-    create a div with a h3, img, and an unordered list
-    h3: name of burger
-    img: picture
-    ul: allergies
-*/
-
 function createAllergieList(allergies, div){
     
     //let element = document.getElementById("grid-wrapper");
@@ -56,12 +49,19 @@ function createGridObject(menu, element){
 
 // --------------------------- Running -------------------------------
 
+/* Need to try if this works
+
 let burger1 = new menuItem("The American Dream", 1000, "img/american_dream.jpg", ["Gluten", "Lactose"]);
 let burger2 = new menuItem("Bacon Attack", 1500, "img/bacon_attack.jpg", []);
 let burger3 = new menuItem("Meatlovers Nightmare", 700, "img/vegan_burger.jpg", ["Gluten"]);
 
 
 let menu = [burger1, burger2, burger3];
+
+*/
+
+let menu = menu;
+
 let element = document.getElementById("grid-wrapper");
 
 createGridObject(menu, element);
