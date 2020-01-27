@@ -1,7 +1,7 @@
 
 // Make this better looking 
 
-let menu = [
+let food = [
     {
     "name": "The American Dream",
     "kCal": 2000,

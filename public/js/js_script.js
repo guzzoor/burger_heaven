@@ -36,7 +36,7 @@ function createGridObject(menu, element){
 	    let div = document.createElement("div");
         let h3 = document.createElement("h3");
         let img = document.createElement("img");
-        img.src = menu[i].picture;
+        img.src = menu[i].img;
         h3.innerHTML = menu[i].name;
         let allList = menu[i].allergies
         div.appendChild(h3);
@@ -49,19 +49,6 @@ function createGridObject(menu, element){
 
 // --------------------------- Running -------------------------------
 
-/* Need to try if this works
-
-let burger1 = new menuItem("The American Dream", 1000, "img/american_dream.jpg", ["Gluten", "Lactose"]);
-let burger2 = new menuItem("Bacon Attack", 1500, "img/bacon_attack.jpg", []);
-let burger3 = new menuItem("Meatlovers Nightmare", 700, "img/vegan_burger.jpg", ["Gluten"]);
-
-
-let menu = [burger1, burger2, burger3];
-
-*/
-
-let menu = menu;
-
+let menu = food;
 let element = document.getElementById("grid-wrapper");
-
 createGridObject(menu, element);

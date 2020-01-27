@@ -2,9 +2,9 @@
 
 
 let vm = new Vue({
-    el: '.grid-wrapper',
+    el: '#grid-wrapper',
     data: {
-      menu: menu
+      menu: food
     },
     
     methods: {

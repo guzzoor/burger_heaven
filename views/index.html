@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <script src="https://vuejs.org/js/vue.js" defer></script>
         <script src="js/menu.js" defer></script>
-        <!-- <script src="js/js_script.js" defer></script> -->
+        <!--<script src="js/js_script.js" defer></script>-->
         <script src="js/vue_script.js" defer></script>
     </head>
     <body>
@@ -19,21 +19,30 @@
         </header>
         <main>
            <!-------------------------------------- Burger selection part -------------------------------------->
-            <section id="burgers">
+
+           <!-- ------------------------- VUE ---------------------- -->
+           <section id="burgers">
                 <h2>Select burger</h2>
-                <div class="grid-wrapper">
+                <div id="grid-wrapper">
                     <div class="inner-grid"v-for="burger in menu">
                         {{burger.name}}
                         <img v-bind:src="burger.img">
                         <ul>
                             <li v-for="all in burger.allergies">{{all}}</li>
                         </ul>
-
                     </div>
                 </div>
-                
             </section>
-            
+
+
+            <!------------------------ Plain Javascript -------------------------------
+            <section id="burgers">
+                <h2>Select burger</h2>
+                <div id="grid-wrapper">
+
+                </div>
+            </section>
+        -->
             <!-------------------------------------- Customer part -------------------------------------->
             <section id="contact">
                 <h2>Customer information</h2>
@@ -77,7 +86,7 @@
                         <input type="radio" name="gender" value="female">Female
                         <input type="radio" name="gender" value="other" checked="checked">Other
                     </div>
-                    <button type="submit" value="Send"><img src="delivey.png">Send info</button>
+                    <button type="submit" value="Send"><img src="img/delivery.png">Send info</button>
                     </form>
                 </fieldset>
             </section>            

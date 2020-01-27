@@ -4,6 +4,9 @@
 
 @import url("https://fonts.googleapis.com/css?family=Droid+Serif|Share+Tech+Mono");
 
+img {
+    width: 20px;
+}
 
 body {
     font-family: "Droid Serif", sans-serif;
@@ -11,13 +14,13 @@ body {
     margin: 0 auto;
 }
 
-.grid-wrapper{
+#grid-wrapper{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 1em;
 }
 
-.grid-wrapper img{
+#grid-wrapper img{
     width: 200px;
     height: 150px;
 }
