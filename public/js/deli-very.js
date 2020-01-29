@@ -6,9 +6,20 @@ const socket = io();
 
 /* eslint-disable-next-line no-unused-vars */
 const vm = new Vue({
-  el: '#dots',
+  el: '#vue-wrapper',
   data: {
+    isHidden: true,
+    mapInfo: {},
+    currentOrder: {},
     orders: {},
+    menu: food,
+    currentOrderData: {
+      name: null,
+      email: null,
+      payment: null,
+      gender: null,
+      orderedBurger: [],
+    },
   },
   created: function() {
     /* When the page is loaded, get the current orders stored on the server.
@@ -49,11 +60,39 @@ const vm = new Vue({
       socket.emit('addOrder', {
         orderId: this.getNext(),
         details: {
-          x: event.clientX - 10 - offset.x,
-          y: event.clientY - 10 - offset.y,
+          x: this.mapInfo.x,
+          y: this.mapInfo.y,
         },
-        orderItems: ['Beans', 'Curry'],
+        orderItems: [this.currentOrderData.orderedBurger],
+        personalInfo: {name: this.currentOrderData.name, email: this.currentOrderData.email, 
+                       payment: this.currentOrderData.payment, gender: this.currentOrderData.gender},
       });
+      this.currentOrderData.name = null;
     },
+    displayOrder: function(event) {
+      let offset = {
+        x: event.currentTarget.getBoundingClientRect().left,
+        y: event.currentTarget.getBoundingClientRect().top,
+      };
+      this.mapInfo = { x: event.clientX - 10 - offset.x,
+        y: event.clientY - 10 - offset.y }; 
+    },
+    showOrHideOrder: function(event){
+      if(this.isHidden == true){
+        this.isHidden = false;
+      } else {
+        this.isHidden = true;
+      }
+    }
+  },
+
+  created: function() {
+    socket.on('initialize', function(data) {
+      this.currentOrder = data.orders;
+    }.bind(this));
+    
+    socket.on('currentQueue', function(data) {
+      this.currentOrder = data.orders;
+    }.bind(this));
   },
 });

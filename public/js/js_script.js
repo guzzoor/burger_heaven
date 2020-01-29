@@ -59,11 +59,9 @@ let button = document.getElementById("myButton");
 button.onclick = function(){
     let n = document.getElementById("name").value;
     let e = document.getElementById("email").value; 
-    let s = document.getElementById("street").value;
-    let h = document.getElementById("house").value;
     let p = document.getElementById("payment").value;
     let g = document.querySelector('input[name=gender]:checked').value;
-    let formArr = [n, e, s, h, p, g];
+    let formArr = [n, e, p, g];
     console.log(formArr);
     return formArr;
 }

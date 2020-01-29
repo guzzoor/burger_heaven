@@ -6,10 +6,13 @@
         <!-- Will reset css -->
         <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/deli-very.css">
+        <script src="/socket.io/socket.io.js" defer></script>
         <script src="https://vuejs.org/js/vue.js" defer></script>
         <script src="js/menu.js" defer></script>
         <!--<script src="js/js_script.js" defer></script>-->
-        <script src="js/vue_script.js" defer></script>
+        <script src="/vue/vue.js" defer></script>
+        <script src="js/deli-very.js" defer></script>
     </head>
     <body>
         <header>
@@ -32,16 +35,16 @@
                             <li v-for="all in burger.allergies">{{all}}</li>
                         </ul>
                         <!-- Need go get these different, I don't see how...-->
-                        <div id="checkbox">
+                        <div class="checkbox">
                             <label for="add-to-order">Add to order</label>
-                            <input id="add-to-order" type="checkbox" v-model="currentOrderData.orderedBurger" v-bind:value="burger.name"> 
+                            <input type="checkbox" id="add-to-order" :value="burger.name" v-model="currentOrderData.orderedBurger"> 
                         </div>
-                       
                     </div>
                 </div>
             </section>
             
-            <!--------------------------- Plain JS ------------------------
+
+            <!--------------------------------------- Plain JS -------------------------------------------
             <section id="burgers">
                 <h2>Select burger</h2>
                 <div id="grid-wrapper">
@@ -49,14 +52,13 @@
                 </div>
             </section>
             -->            
-
             <!-------------------------------------- Customer part -------------------------------------->
             <section id="contact">
                 <h2>Customer information</h2>
                 <h3>Delivery information</h3>
                 Fill in all of the fields, else you won't get any burgers. Which of course if nice for us, because then we can eat it ourselved!
                 But we need money....
-                <fieldset>
+
                     <form>
                         <div>
                             <label for="Full name">Full name</label>
@@ -66,14 +68,7 @@
                             <label for="E-mail">E-mail</label>
                             <br>
                             <input v-model="currentOrderData.email" type="text" id="email" name="em" required="required" placeholder="E-mail address"/>
-                            <br>
-                            <label for="Street">Street</label>
-                            <br>
-                            <input v-model="currentOrderData.street" type="text" id="street" name="sm" required="required" placeholder="Street name"/>
-                            <br>
-                            <label for="House">House</label>
-                            <br>
-                            <input v-model="currentOrderData.house" type="text" id="house" name="hn" required="required" placeholder="House number"/>
+                            <br>                            
                         </div>
 
                     <div>
@@ -89,16 +84,44 @@
                     <div>
                         <h3>Gender</h3>
                         Please enter your information, because, why not?
-                        <input v-model="currentOrderData.gender" type="radio" name="gender" value="male">Male
-                        <input v-model="currentOrderData.gender" type="radio" name="gender" value="female">Female
-                        <input v-model="currentOrderData.gender" type="radio" name="gender" value="other" checked="checked">Other
+                        <input v-model="currentOrderData.gender" type="radio" name="gender" value="Male">Male
+                        <input v-model="currentOrderData.gender" type="radio" name="gender" value="Female">Female
+                        <input v-model="currentOrderData.gender" type="radio" name="gender" value="Other" checked="checked">Other
+                    </div>
+
+<!------------------------------------------ Map ------------------------------------>
+      
+                    <h1> Click in the map! </h1>
+                    <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+                    <div class="view-box">
+                      <div id="dots" v-on:click="displayOrder">
+                          <div 
+                            v-bind:style="{ left: mapInfo.x + 'px', top: mapInfo.y + 'px'}">
+                            T
+                          </div>
+                      </div>
                     </div>
                     <!--<button type="submit" value="Send" id="myButton"><img src="img/delivery.png">Send info</button>-->
-                    <button type="submit" value="Send" class="grid-wrapper" v-on:click="formButton"><img src="img/delivery.png">Send info</button>
+                    <button type="submit" value="Send" class="grid-wrapper" v-on:click="addOrder"><img src="img/delivery.png">Send info</button>
+                    <button type="button" class="grid-wrapper" v-on:click="showOrHideOrder">Show order.</button>
                     </form>
-                </fieldset>
-                {{currentOrderData}}    
-            </section>
+                </section>
+                <div v-for="(order, key) in currentOrder">
+                <div id="orderInfo" v-if="!isHidden">
+                    <h2>Order confirmation</h2>
+                    <br>
+                    <h3>Customer details</h3>
+                    <br>
+                    Name: {{order.personalInfo.name}}<br>
+                    Email: {{order.personalInfo.email}}<br>
+                    Deliver to: x: {{order.details.x}} y: {{order.details.y}}<br> 
+                    Payment: {{order.personalInfo.payment}}<br>
+                    Gender: {{order.personalInfo.gender}}<br>
+                    <br>
+                    <h3>Order details</h3>
+                    Burger ordered: {{order.orderItems.join(", ")}}
+                </div>
+            </div>
         </div>            
     </main>
         <footer>
