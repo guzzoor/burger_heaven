@@ -4,14 +4,36 @@
 
 @import url("https://fonts.googleapis.com/css?family=Droid+Serif|Share+Tech+Mono");
 
-img {
-    width: 20px;
-}
-
 body {
     font-family: "Droid Serif", sans-serif;
     font-size: 1.5em;
-    margin: 0 auto;
+    margin: 0;
+}
+
+section{
+    margin: 10px;
+    padding-left: 10px;
+}
+
+
+header img{
+    height: 400px;
+    width: 100%;
+    opacity: 0.5;
+    height: auto;
+}
+
+header{
+    margin: 10px;
+    padding: 10px;
+    height: auto;
+    overflow: hidden;
+}
+
+header h1{
+    position: absolute;
+    padding: 15px;
+    z-index: 1;
 }
 
 #grid-wrapper{
@@ -23,11 +45,16 @@ body {
 #grid-wrapper img{
     width: 200px;
     height: 150px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .inner-grid{
     display: grid;
     padding: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 
@@ -51,22 +78,6 @@ button:hover{
     background-color: aqua;
 }
 
-header{
-    margin: 10px;
-    padding: 10px;
-    height: auto;
-    overflow: hidden;
-}
-
-header h1{
-    position: absolute;
-    padding: 15px;
-}
-
-section{
-    margin: 10px;
-    padding: 10px;
-}
 
 #burgers{
     border: 2px dashed white;
@@ -76,12 +87,17 @@ section{
     border: 2px dashed black;
 }
 
-button{
-    width: 10%;
+#orderInfo{
+    margin-left: 30px;
 }
 
-header img{
-    opacity: 0.5;
-    width: 100%;
-    height: auto;
+button{
+    margin: 10px;
+    width: 20%;
 }
+
+button img {
+    width: 15px;
+    padding-right: 10px;
+}
+

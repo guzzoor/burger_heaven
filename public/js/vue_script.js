@@ -2,14 +2,12 @@
 
 
 let vm = new Vue({
-    el: '#vue-wrapper',
+    el: '#vue-wrapper2',
     data: {
       menu: food,
       currentOrderData: {
         name: null,
         email: null,
-        street: null,
-        house: null,
         payment: null,
         gender: null,
         orderedBurger: null,
