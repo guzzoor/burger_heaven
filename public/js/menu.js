@@ -25,5 +25,29 @@ let food = [
     "gluten": false,
     "allergies": ["Gluten", "Lactose"],
     "img": "img/vegan_burger.jpg"
+    },
+    {
+    "name": "test",
+    "kCal": 850,
+    "lactose": true,
+    "gluten": false,
+    "allergies": ["Gluten", "Lactose"],
+    "img": "img/vegan_burger.jpg"
+    },
+    {
+    "name": "test1",
+    "kCal": 850,
+    "lactose": true,
+    "gluten": false,
+    "allergies": ["Gluten", "Lactose"],
+    "img": "img/vegan_burger.jpg"
+    },
+    {
+    "name": "Meatlovers nightmare",
+    "kCal": 850,
+    "lactose": true,
+    "gluten": false,
+    "allergies": ["Gluten", "Lactose"],
+    "img": "img/vegan_burger.jpg"
     }
   ]

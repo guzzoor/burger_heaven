@@ -41,3 +41,8 @@ body {
 	background: rgba(255,255,255, 0.5);
 	padding: 1em;
 }
+
+#personalInfo{
+	font-style: italic;
+	margin-left: 15px;
+}
