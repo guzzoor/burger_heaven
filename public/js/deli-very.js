@@ -16,7 +16,7 @@ const vm = new Vue({
     currentOrderData: {
       name: null,
       email: null,
-      payment: null,
+      payment: "Swish",
       gender: null,
       orderedBurger: [],
     },
@@ -39,6 +39,9 @@ const vm = new Vue({
   },
   methods: {
     getNext: function() {
+
+      // Not sure if this is working or not... 
+
       /* This function returns the next available key (order number) in
        * the orders object, it works under the assumptions that all keys
        * are integers. */
@@ -58,7 +61,7 @@ const vm = new Vue({
         y: event.currentTarget.getBoundingClientRect().top,
       };
       socket.emit('addOrder', {
-        orderId: this.getNext(),
+        orderId: Object.keys(this.currentOrder).length + 1,
         details: {
           x: this.mapInfo.x,
           y: this.mapInfo.y,
@@ -67,7 +70,6 @@ const vm = new Vue({
         personalInfo: {name: this.currentOrderData.name, email: this.currentOrderData.email, 
                        payment: this.currentOrderData.payment, gender: this.currentOrderData.gender},
       });
-      this.currentOrderData.name = null;
     },
     displayOrder: function(event) {
       let offset = {
@@ -83,7 +85,7 @@ const vm = new Vue({
       } else {
         this.isHidden = true;
       }
-    }
+    },
   },
 
   created: function() {
@@ -93,6 +95,6 @@ const vm = new Vue({
     
     socket.on('currentQueue', function(data) {
       this.currentOrder = data.orders;
-    }.bind(this));
+    }.bind(this)); 
   },
 });

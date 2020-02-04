@@ -13,7 +13,7 @@
         <!--<script src="js/js_script.js" defer></script>-->
         <script src="/vue/vue.js" defer></script>
         <script src="js/deli-very.js" defer></script>
-    </head>
+    </head> 
     <body>
         <header>
             <!-- Fix the opacity of the h1 -->
@@ -34,7 +34,6 @@
                         <ul>
                             <li v-for="all in burger.allergies">{{all}}</li>
                         </ul>
-                        <!-- Need go get these different, I don't see how...-->
                         <div class="checkbox">
                             <label for="add-to-order">Add to order</label>
                             <input type="checkbox" id="add-to-order" :value="burger.name" v-model="currentOrderData.orderedBurger"> 
@@ -43,7 +42,6 @@
                 </div>
             </section>
             
-
             <!--------------------------------------- Plain JS -------------------------------------------
             <section id="burgers">
                 <h2>Select burger</h2>
@@ -56,9 +54,8 @@
             <section id="contact">
                 <h2>Customer information</h2>
                 <h3>Delivery information</h3>
-                Fill in all of the fields, else you won't get any burgers. Which of course if nice for us, because then we can eat it ourselved!
-                But we need money....
-
+                <p>Fill in all of the fields, else you won't get any burgers. Which of course if nice for us, because then we can eat it ourselved!
+                But we need money....</p>
                     <form>
                         <div>
                             <label for="Full name">Full name</label>
@@ -77,7 +74,7 @@
                         <select v-model="currentOrderData.payment" id="payment" name="payment">
                             <option value="cash">Cash</option>
                             <option value="card">Card</option>
-                            <option value="swish" selected="select">Swish</option>
+                            <option value="swish">Swish</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
@@ -95,20 +92,19 @@
                     <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
                     <div class="view-box">
                       <div id="dots" v-on:click="displayOrder">
-                          <div 
-                            v-bind:style="{ left: mapInfo.x + 'px', top: mapInfo.y + 'px'}">
+                          <div v-bind:style="{ left: mapInfo.x + 'px', top: mapInfo.y + 'px'}">
                             T
                           </div>
                       </div>
                     </div>
                     <!--<button type="submit" value="Send" id="myButton"><img src="img/delivery.png">Send info</button>-->
                     <button type="submit" value="Send" class="grid-wrapper" v-on:click="addOrder"><img src="img/delivery.png">Send info</button>
-                    <button type="button" class="grid-wrapper" v-on:click="showOrHideOrder">Show order.</button>
+                    <button type="button" class="grid-wrapper" v-on:click="showOrHideOrder">Show order history</button>
                     </form>
                 </section>
                 <div v-for="(order, key) in currentOrder">
                 <div id="orderInfo" v-if="!isHidden">
-                    <h2>Order confirmation</h2>
+                    <h2>Order confirmation for order: {{key}}</h2>
                     <br>
                     <h3>Customer details</h3>
                     <br>
